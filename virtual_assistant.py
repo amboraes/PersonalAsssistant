@@ -15,7 +15,8 @@ import warnings
 import calendar
 import random
 import wikipedia
-
+import platform
+from playsound import playsound
 # Ignore any warning messages
 
 warnings.filterwarnings('ignore')
@@ -55,7 +56,10 @@ def assistantResponse(text):
     myobj.save('assistant_response.mp3')
 
     # Play the converted file
-    os.system('start assistant_response.mp3')
+    if platform.system() == 'Windows':
+        os.system('start assistant_response.mp3')
+    else:
+        playsound('assistant_response.mp3')
 
 
 # create a function for wake words or phrase
